@@ -1,0 +1,29 @@
+﻿@model ProductSearchResponse
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
+
+<div class="container">
+  <h3>@Localizer["Toplam {0} ürün bulundu.", Model.Total]</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>@Localizer["İsim"]</th>
+        <th>@Localizer["Açıklama"]</th>
+        <th>@Localizer["Fiyat"]</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+        @foreach(var product in Model.Products)
+        {
+          <tr>
+            <td>@product.ProductId</td>
+            <td>@product.Name</td>
+            <td>@product.Description</td>
+            <td>@product.Price</td>
+          </tr>
+        }
+    </tbody>
+  </table>
+</div>
